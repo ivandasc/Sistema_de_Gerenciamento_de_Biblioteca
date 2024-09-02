@@ -1,0 +1,23 @@
+
+### 3. .gitignore
+
+O arquivo `.gitignore` deve incluir arquivos e pastas que não são necessários no repositório, especialmente os gerados automaticamente pelo ambiente de desenvolvimento ou pelo sistema operacional. Aqui está um exemplo básico:
+
+```gitignore
+# Arquivos e pastas temporárias
+*.tmp
+*.temp
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de log
+*.log
+
+# Arquivos de banco de dados locais (se aplicável)
+*.sql.bak
+*.db
+
+# Configurações do ambiente
+.env
