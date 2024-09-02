@@ -1,0 +1,72 @@
+### Sistema de Gerenciamento de Biblioteca
+
+#### Descrição: O objetivo deste projeto é desenvolver um sistema de gerenciamento de biblioteca utilizando o MySQL. Este sistema permitirá o cadastro e gerenciamento de autores e livros, além de registrar e acompanhar empréstimos de livros. O projeto abrange a criação do banco de dados, tabelas, inserção de dados e manipulação de registros através de consultas, atualizações e exclusões.
+
+#### Objetivos Específicos:
+
+Criar um banco de dados denominado Biblioteca.
+Criar tabelas para gerenciar autores (Autores), livros (Livros) e empréstimos (Emprestimos).
+Inserir registros nas tabelas de autores e livros, simulando um cenário real de uma biblioteca.
+Realizar operações CRUD (Create, Read, Update, Delete) para gerenciar os dados de empréstimos.
+Executar consultas SQL para listar livros, autores e empréstimos em aberto.
+Atualizar dados relacionados aos empréstimos, como a data de devolução.
+Excluir registros de livros e seus empréstimos associados.
+
+## Estrutura do Projeto
+
+1. **Banco de Dados**: O banco de dados `Biblioteca` contém três tabelas principais:
+   - `Autores`: Armazena informações sobre autores.
+   - `Livros`: Armazena informações sobre livros e seus autores.
+   - `Emprestimos`: Registra informações sobre os empréstimos de livros.
+
+2. **Tabelas e Relacionamentos**:
+   - A tabela `Livros` possui uma chave estrangeira (`AutorID`) que referencia a tabela `Autores`.
+   - A tabela `Emprestimos` possui uma chave estrangeira (`LivroID`) que referencia a tabela `Livros`.
+
+## Instruções de Uso
+
+### Pré-requisitos
+- MySQL instalado no sistema.
+- Acesso ao MySQL via terminal ou através de uma interface gráfica como MySQL Workbench.
+
+### Passos para Configuração
+
+1. **Clonar o Repositório**
+   
+   git clone <URL_DO_REPOSITORIO>
+   cd Sistema-Gerenciamento-Biblioteca
+
+Executar o Script SQL
+
+Acesse o MySQL e execute o conteúdo do arquivo biblioteca.sql para criar o banco de dados e tabelas.
+SOURCE caminho/para/o/arquivo/biblioteca.sql;
+Inserir Dados e Testar
+
+Use os comandos SQL fornecidos no script para inserir os registros iniciais e realizar operações de consulta, atualização e exclusão.
+Consultas e Operações
+Listar todos os livros com os nomes de seus autores:
+SELECT Livros.Titulo, Autores.Nome AS Autor, Livros.AnoPublicacao
+FROM Livros
+JOIN Autores ON Livros.AutorID = Autores.AutorID;
+
+SELECT Livros.Titulo, Autores.Nome AS Autor, Livros.AnoPublicacao
+FROM Livros
+JOIN Autores ON Livros.AutorID = Autores.AutorID;
+SELECT Emprestimos.EmprestimoID, Livros.Titulo, Emprestimos.DataEmprestimo, Emprestimos.NomeUsuario
+FROM Emprestimos
+JOIN Livros ON Emprestimos.LivroID = Livros.LivroID
+WHERE Emprestimos.DataDevolucao IS NULL;
+
+Atualizar a data de devolução de um empréstimo específico:
+UPDATE Emprestimos
+SET DataDevolucao = 'YYYY-MM-DD'
+WHERE EmprestimoID = <ID_DO_EMPRESTIMO>;
+UPDATE Emprestimos
+SET DataDevolucao = 'YYYY-MM-DD'
+WHERE EmprestimoID = <ID_DO_EMPRESTIMO>;
+
+Contribuição
+Contribuições são bem-vindas! Por favor, faça um fork deste repositório e envie um pull request.
+
+Licença
+Este projeto é licenciado sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
